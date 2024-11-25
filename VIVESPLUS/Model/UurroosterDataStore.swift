@@ -23,17 +23,24 @@ class UurroosterDataStore {
 
     
     func addEvent(event: EventModel) {
-        var event = EventModel()
         event.id = UUID().uuidString
         uurrooster.append(event)
+        uurrooster = sort()
     }
     
     func updateEvent(updatedEvent: EventModel) {
-        for var event in uurrooster {
+        for event in uurrooster {
             if event.id == updatedEvent.id {
-                event = updatedEvent
+                //event = updatedEvent
+                event.title = updatedEvent.title
+                event.endDateTime = updatedEvent.endDateTime
+                event.location = updatedEvent.location
+                event.startDateTime = updatedEvent.startDateTime
+                event.type = updatedEvent.type
+                event.allDay = updatedEvent.allDay
             }
         }
+        uurrooster = sort()
     }
     
     func deleteEvent(id: String) {
@@ -41,7 +48,16 @@ class UurroosterDataStore {
     }
     
     func getEvent(id: String) -> EventModel? {
+        for event in uurrooster {
+            if event.id == id {
+                return event
+            }
+        }
         return nil
+    }
+    
+    func getEvents() -> [EventModel] {
+        return uurrooster
     }
     
 }

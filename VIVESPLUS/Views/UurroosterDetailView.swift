@@ -35,3 +35,6 @@ struct UurroosterDetailView: View {
         }.padding()
     }
 }
+#Preview {
+    Text("oets")
+}

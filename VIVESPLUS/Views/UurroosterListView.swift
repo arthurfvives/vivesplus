@@ -16,10 +16,9 @@ struct UurroosterListView: View {
                 Text(event.title)
             }.navigationTitle("Uurrooster").toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    Button("+") {
-                        if selectedEvent != nil {
-                            
-                        }
+                    NavigationLink("+") {
+                        AddEditEventView(selectedEvent: EventModel(), isNew: true)
+                        
                     }
                 }
             }
@@ -28,10 +27,11 @@ struct UurroosterListView: View {
             if (selectedEvent != nil) {
                 UurroosterDetailView(selectedEvent: selectedEvent!).navigationTitle("Uurrooster detail").toolbar {
                     ToolbarItem(placement: .primaryAction) {
-                        Button("Aanpassen") {
-                            
+                        NavigationLink("Aanpassen") {
+                            AddEditEventView(selectedEvent: EventModel(from:selectedEvent!), isNew: false)
                         }
                     }
+                    //(isnew: false, event: eventModel(from:event).navigationbarbackbuttonhidden(true)
                 }
             }
         }
