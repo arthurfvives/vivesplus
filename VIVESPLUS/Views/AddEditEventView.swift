@@ -16,7 +16,7 @@ struct AddEditEventView: View {
         if isNew == true {
             Text("ADD EVENT")
             VStack {
-                VStack {
+                VStack(alignment: .leading) {
                     Text("Title?")
                     Divider()
                     TextField("", text: $selectedEvent.title)
@@ -37,7 +37,8 @@ struct AddEditEventView: View {
                         Text("Academic").tag(0)
                         Text("Course").tag(1)
                     }.pickerStyle(SegmentedPickerStyle()).padding(.all , 4)
-                }.padding().background(Color(.white))
+                }.padding().background(Color(.white)).clipShape(RoundedRectangle(cornerRadius: 15))
+                Spacer()
             }.padding().background(Color(.lightGray))
             HStack {
                 Button("SAVE") {
@@ -45,7 +46,7 @@ struct AddEditEventView: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }
                 Button("CANCEL") {
-                    
+                    self.presentationMode.wrappedValue.dismiss()
                 }
             }.foregroundStyle(Color(.red))
         } else {
@@ -67,7 +68,8 @@ struct AddEditEventView: View {
                         Text("Academic").tag(0)
                         Text("Course").tag(1)
                     }.pickerStyle(SegmentedPickerStyle()).padding(.all , 4)
-                }.padding().background(Color(.white))
+                }.padding().background(Color(.white)).clipShape(RoundedRectangle(cornerRadius: 15))
+                Spacer()
             }.padding().background(Color(.lightGray))
             HStack {
                 Button("SAVE") {
@@ -75,9 +77,10 @@ struct AddEditEventView: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }
                 Button("CANCEL") {
-                    
+                    self.presentationMode.wrappedValue.dismiss()
                 }
             }.foregroundStyle(Color(.red))
+            Spacer()
         }
         
         

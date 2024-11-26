@@ -22,15 +22,19 @@ struct UurroosterDetailView: View {
             HStack {
                 Text("Start")
                 Spacer()
-                Text("\(selectedEvent.startDateTime.formatted())")
+                Text("\(dataStore.format(date: selectedEvent.startDateTime))")
             }
             HStack {
                 Text("Einde")
                 Spacer()
-                Text("\(selectedEvent.endDateTime.formatted())")
+                Text("\(dataStore.format(date: selectedEvent.endDateTime))")
             }
             Divider()
-            Text("Copyright")
+            if selectedEvent.type == 0 {
+                Image(systemName: "c.circle")
+            } else {
+                Image(systemName: "a.circle")
+            }
             Spacer()
         }.padding()
     }

@@ -20,7 +20,20 @@ class UurroosterDataStore {
             event1.startDateTime < event2.startDateTime
         }
     }
-
+    
+    func format(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
+    }
+    
+    func getDate(string: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let date = formatter.date(from: string)
+        return date ?? Date()
+    }
+    
     
     func addEvent(event: EventModel) {
         event.id = UUID().uuidString
