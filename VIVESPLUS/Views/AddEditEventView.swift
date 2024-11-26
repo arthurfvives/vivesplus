@@ -37,7 +37,7 @@ struct AddEditEventView: View {
                         Text("Academic").tag(0)
                         Text("Course").tag(1)
                     }.pickerStyle(SegmentedPickerStyle()).padding(.all , 4)
-                }.padding().background(Color(.white)).clipShape(RoundedRectangle(cornerRadius: 15))
+                }.padding().background(.white).clipShape(RoundedRectangle(cornerRadius: 15))
                 Spacer()
             }.padding().background(Color(.lightGray))
             HStack {
@@ -68,7 +68,7 @@ struct AddEditEventView: View {
                         Text("Academic").tag(0)
                         Text("Course").tag(1)
                     }.pickerStyle(SegmentedPickerStyle()).padding(.all , 4)
-                }.padding().background(Color(.white)).clipShape(RoundedRectangle(cornerRadius: 15))
+                }.padding().background(.white).clipShape(RoundedRectangle(cornerRadius: 15))
                 Spacer()
             }.padding().background(Color(.lightGray))
             HStack {
