@@ -11,23 +11,30 @@ struct UurroosterDetailView: View {
     @Environment(UurroosterDataStore.self) var dataStore
     var selectedEvent: EventModel
     var body: some View {
-        VStack {
+        VStack(spacing: 8) {
             Text(selectedEvent.title).padding().frame(maxWidth: .infinity, alignment: .center).background(RoundedRectangle(cornerRadius: 10).fill(Color.red)).foregroundStyle(Color.white).presentationCornerRadius(10)
             Divider()
-            if selectedEvent.title != "" {
+            if selectedEvent.location != "" {
                 Text(selectedEvent.location).frame(maxWidth: .infinity, alignment: .leading)
             } else {
-                Text("Locatie niet gekend")
+                Text("Locatie niet gekend").frame(maxWidth: .infinity, alignment: .leading)
             }
-            HStack {
-                Text("Start")
-                Spacer()
-                Text("\(dataStore.format(date: selectedEvent.startDateTime))")
-            }
-            HStack {
-                Text("Einde")
-                Spacer()
-                Text("\(dataStore.format(date: selectedEvent.endDateTime))")
+            
+            if selectedEvent.allDay == true {
+                HStack {
+                    Text("\(dataStore.formatDate(date: selectedEvent.startDateTime))  -  volledige dag").frame(maxWidth: .infinity, alignment: .leading)
+                }
+            } else {
+                HStack {
+                    Text("Start")
+                    Spacer()
+                    Text("\(dataStore.formatDateHour(date: selectedEvent.startDateTime))")
+                }
+                HStack {
+                    Text("Einde")
+                    Spacer()
+                    Text("\(dataStore.formatDateHour(date: selectedEvent.endDateTime))")
+                }
             }
             Divider()
             if selectedEvent.type == 0 {
